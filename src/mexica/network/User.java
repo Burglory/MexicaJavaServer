@@ -1,5 +1,7 @@
 package mexica.network;
 
+import mexica.network.server.serverprotocols.Protocol;
+
 import com.nionetframework.common.Connection;
 
 public abstract class User {
@@ -15,5 +17,9 @@ public abstract class User {
 	public abstract boolean isSpectator();
 
 	public abstract boolean isPlayer();
+
+	public abstract void setCurrentProtocol(Protocol p);
+	
+	public abstract void getCurrentProtocol();
 
 }
