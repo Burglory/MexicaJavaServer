@@ -33,4 +33,10 @@ public abstract class Protocol {
 	 */
 	public abstract boolean isTerminated();
 
+	/**
+	 * Returns the reason of the termination of this protocol. Returns null if
+	 * the Protocol has not been violated.
+	 */
+	public abstract String getTerminationReason();
+
 }

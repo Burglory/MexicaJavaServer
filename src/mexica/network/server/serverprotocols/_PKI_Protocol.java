@@ -26,6 +26,7 @@ public class _PKI_Protocol extends Protocol {
 
 	private int currentStage = INACTIVE;
 	private byte[] challenge;
+	private String violation;
 
 	_PKI_Protocol(User u) {
 		this.user = u;
@@ -74,6 +75,7 @@ public class _PKI_Protocol extends Protocol {
 				this.completed = true;
 				this.terminated = false;
 			} else {
+				this.violation = "Client failed to provide a valid response to the challenge.";
 				this.currentStage = ABORTED;
 				this.completed = false;
 				this.terminated = true;
@@ -99,6 +101,12 @@ public class _PKI_Protocol extends Protocol {
 	@Override
 	public boolean isTerminated() {
 		return this.terminated;
+	}
+
+	@Override
+	public String getTerminationReason() {
+		if(!isTerminated()) return null;
+		return this.violation;
 	}
 
 }
