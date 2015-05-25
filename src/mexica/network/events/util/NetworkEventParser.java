@@ -1,6 +1,6 @@
 package mexica.network.events.util;
 
-import com.nionetframework.server.events.NetworkEvent;
+import mexica.network.events.NetworkEvent;
 
 public class NetworkEventParser {
 

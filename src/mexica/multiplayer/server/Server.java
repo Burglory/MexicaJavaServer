@@ -8,7 +8,7 @@ import mexica.multiplayer.server.managers.ConnectionManager;
 import mexica.multiplayer.server.managers.LobbyManager;
 import mexica.multiplayer.server.utilities.ServerLogger;
 import mexica.multiplayer.server.utilities.ServerLogger.ServerLogLevel;
-import mexica.network.events.events.NetworkEventDispatcher;
+import mexica.network.events.NetworkEventDispatcher;
 
 public class Server {
 

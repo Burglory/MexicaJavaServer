@@ -31,6 +31,12 @@ public class _Login_Protocol extends Protocol {
 		return false;
 	}
 
+	@Override
+	public String getTerminationReason() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 }
