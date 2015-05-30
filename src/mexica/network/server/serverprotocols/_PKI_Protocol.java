@@ -1,7 +1,9 @@
 package mexica.network.server.serverprotocols;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
+import mexica.network.NetworkStandards;
 import mexica.network.User;
 
 import com.nionetframework.common.PacketInbound;
@@ -63,7 +65,7 @@ public class _PKI_Protocol extends Protocol {
 			challenge = PKI_Util.generateChallenge();
 			String challengestring = PKI_Util.encode(challenge);
 			db.add(SESSION).wrap(signedsession).add(CHALLENGE).wrap(challengestring);
-			p = new PacketOutbound(db.getString(), user.getConnection());
+			p = new PacketOutbound(db.getString().getBytes(NetworkStandards.charset), user.getConnection());
 			this.currentStage = RECEIVE_CLIENT_CONFIRMATION;
 		}
 		case RECEIVE_CLIENT_CONFIRMATION: {

@@ -1,5 +1,7 @@
 package mexica.network;
 
+import mexica.network.server.serverprotocols.Protocol;
+
 import com.nionetframework.common.Connection;
 import com.nionetframework.common._Connection;
 
@@ -61,6 +63,18 @@ public class _User extends User {
 	public boolean isPlayer() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void setCurrentProtocol(Protocol p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getCurrentProtocol() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

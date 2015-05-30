@@ -39,6 +39,7 @@ public class _RoomManager extends RoomManager {
 	}
 
 	@Override
+	public
 	boolean addLobby(Room l) {
 		return this.onlinegamelobbies.add(l);
 	}
