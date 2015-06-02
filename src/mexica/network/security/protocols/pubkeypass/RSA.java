@@ -18,6 +18,8 @@ import java.security.SecureRandom;
 
 import javax.crypto.Cipher;
 
+import com.nionetframework.common.encryption.Base64;
+
 public class RSA {
 
 	/**
@@ -153,7 +155,7 @@ public class RSA {
 			 RSA r= new RSA();
 			 String seedstring = username + password;
 			 r.generateKeys(seedstring.getBytes(StandardCharsets.UTF_8));
-			 System.out.println(new String(r.publickey.getEncoded(), StandardCharsets.UTF_8));
+			 System.out.println(Base64.encodeString(new String(r.publickey.getEncoded(), StandardCharsets.UTF_8)));
 
 		} catch (Exception e) {
 			e.printStackTrace();
