@@ -13,6 +13,8 @@ import com.nionetframework.common.data.DataBuilder;
 /**Do we need typing of the Packets?*/
 public class _PKI_Protocol extends Protocol {
 
+
+	
 	private static final int RECEIVE_CLIENT_PUBKEY = 1;
 	private static final int INACTIVE = 0;
 	private static final int RECEIVE_CLIENT_CONFIRMATION = 2;
@@ -35,7 +37,7 @@ public class _PKI_Protocol extends Protocol {
 	}
 
 	@Override
-	public PacketOutbound validate(PacketInbound packet) {
+	public PacketOutbound validate(PacketInbound packet) throws ProtocolComplianceException {
 		PacketOutbound p = null;
 		if (!packet.getSource().equals(user.getConnection())) {
 			throw new RuntimeException(
@@ -81,6 +83,7 @@ public class _PKI_Protocol extends Protocol {
 				this.currentStage = ABORTED;
 				this.completed = false;
 				this.terminated = true;
+				throw new ProtocolComplianceException(violation);
 			}
 		}
 		}
@@ -88,11 +91,10 @@ public class _PKI_Protocol extends Protocol {
 	}
 
 	@Override
-	public Protocol engageFor(User u) {
-		_PKI_Protocol p = new _PKI_Protocol(u);
-		u.setCurrentProtocol(p);
-		p.currentStage = RECEIVE_CLIENT_PUBKEY;
-		return p;
+	public void engageFor(User u) {
+		this.user = u;
+		u.setCurrentProtocol(this);
+		this.currentStage = RECEIVE_CLIENT_PUBKEY;
 	}
 
 	@Override

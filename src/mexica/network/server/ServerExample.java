@@ -35,7 +35,7 @@ public class ServerExample implements ServerEventListener {
 	}
 	
 	@ServerEvents
-	public void onNewConnectionEvent(ConnectionNewEvent e) {
+	public void onConnectionNewEvent(ConnectionNewEvent e) {
 		
 	}
 	

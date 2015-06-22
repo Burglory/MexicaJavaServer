@@ -8,6 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class _RoomManager extends RoomManager {
 
 	private Set<Room> onlinegamelobbies;
+	private Lounge lounge;
 
 	public _RoomManager() {
 		this.onlinegamelobbies = Collections
@@ -42,6 +43,16 @@ public class _RoomManager extends RoomManager {
 	public
 	boolean addLobby(Room l) {
 		return this.onlinegamelobbies.add(l);
+	}
+
+	@Override
+	public void setLounge(Lounge l) {
+		this.lounge = l;
+	}
+
+	@Override
+	public Lounge getLounge() {
+		return this.lounge;
 	}
 
 }

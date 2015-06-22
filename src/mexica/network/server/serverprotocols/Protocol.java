@@ -7,19 +7,24 @@ import com.nionetframework.common.PacketInbound;
 import com.nionetframework.common.PacketOutbound;
 
 public abstract class Protocol {
-
-	public static Protocol PKI_Protocol = new _PKI_Protocol(null);
+	
+	public static final Protocol getPKI_Protocol(User u) {
+		Protocol p = new _PKI_Protocol(u);
+		p.engageFor(u);
+		return p;
+	}
 
 	/**
 	 * Processes the packet for this Protocol. Returns the next Packet to send
 	 * to the Source to continue the Protocol. Returns null if this Protocol is
 	 * finished or terminated. Use {@link #isTerminated()} and
 	 * {@link #isCompleted()} to find out.
+	 * @throws ProtocolComplianceException 
 	 */
-	public abstract PacketOutbound validate(PacketInbound packet);
+	public abstract PacketOutbound validate(PacketInbound packet) throws ProtocolComplianceException;
 
 	/** Starts the Protocol for this User. Returns the Protocol. */
-	public abstract Protocol engageFor(User u);
+	public abstract void engageFor(User u);
 
 	/**
 	 * Used to determine if the Protocol has completed succesfully. Returns

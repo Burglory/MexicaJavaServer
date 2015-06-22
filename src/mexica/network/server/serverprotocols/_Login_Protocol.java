@@ -14,9 +14,9 @@ public class _Login_Protocol extends Protocol {
 	}
 
 	@Override
-	public Protocol engageFor(User u) {
+	public void engageFor(User u) {
 		// TODO Auto-generated method stub
-		return null;
+		return;
 	}
 
 	@Override

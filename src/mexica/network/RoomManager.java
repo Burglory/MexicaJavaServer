@@ -17,4 +17,8 @@ public abstract class RoomManager {
 
 	public abstract boolean addLobby(Room l);
 
+	public abstract void setLounge(Lounge l);
+	
+	public abstract Lounge getLounge();
+
 }
